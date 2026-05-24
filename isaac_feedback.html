@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>說說你眼中的我 — Isaac</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  background:#fafaf9;
+  color:#1a1a1a;
+  font-size:15px;
+  line-height:1.65;
+  min-height:100vh;
+}
+.wrap{
+  max-width:520px;
+  margin:0 auto;
+  padding:2rem 1.25rem 4rem;
+}
+
+/* hero */
+.hero{text-align:center;padding:3rem 0 2rem}
+.hero-name{font-size:12px;color:#bbb;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-size:26px;font-weight:500;color:#1a1a1a;line-height:1.3;margin-bottom:14px}
+.hero-sub{font-size:15px;color:#777;line-height:1.75}
+
+/* divider */
+.divider{height:1px;background:#ebebeb;margin:2rem 0}
+
+/* section */
+.section{margin-bottom:2.5rem}
+.section-num{font-size:11px;color:#bbb;letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
+.section-q{font-size:17px;font-weight:500;color:#1a1a1a;margin-bottom:7px;line-height:1.4}
+.section-hint{font-size:13px;color:#999;margin-bottom:14px;line-height:1.6}
+.counter{font-size:12px;color:#bbb;margin-bottom:10px}
+.counter b{color:#555;font-weight:500}
+.sub-label{font-size:12px;color:#bbb;margin:18px 0 7px;font-weight:500;letter-spacing:.03em}
+
+/* tags */
+.tag-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+button.tag{
+  padding:7px 15px;
+  border-radius:24px;
+  font-size:13px;
+  cursor:pointer;
+  font-family:inherit;
+  outline:none;
+  transition:all .12s ease;
+  line-height:1;
+  background:#f0efed;
+  color:#666;
+  border:1.5px solid #e0dfdc;
+}
+button.tag:hover{background:#e8e7e4;border-color:#ccc}
+
+/* textarea */
+textarea{
+  width:100%;
+  padding:13px 15px;
+  border:1.5px solid #e8e7e4;
+  border-radius:14px;
+  font-size:14px;
+  font-family:inherit;
+  resize:none;
+  background:#fff;
+  color:#1a1a1a;
+  outline:none;
+  line-height:1.65;
+  transition:border-color .15s;
+}
+textarea:focus{border-color:#bbb}
+textarea::placeholder{color:#ccc}
+.char-count{font-size:11px;color:#ccc;text-align:right;margin-top:5px}
+
+/* blindbox */
+.blindbox-wrap{
+  margin-top:16px;
+  padding:16px;
+  background:#fff;
+  border-radius:14px;
+  border:1.5px solid #e8e7e4;
+}
+.blindbox-label{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px}
+.blindbox-hint{font-size:12px;color:#aaa;margin-bottom:10px;line-height:1.5}
+
+/* friend box */
+.friend-box{
+  background:#fff;
+  border-radius:16px;
+  padding:1.5rem;
+  margin-bottom:1.5rem;
+  border:1.5px solid #e8e7e4;
+}
+.friend-box p{font-size:14px;color:#666;line-height:1.75}
+.hl{font-weight:500;color:#1a1a1a}
+
+/* ig input */
+.ig-row{display:flex;align-items:center;gap:8px;margin-top:12px}
+.ig-pre{font-size:16px;color:#aaa;font-weight:400}
+input[type=text]{
+  flex:1;
+  padding:11px 14px;
+  border:1.5px solid #e8e7e4;
+  border-radius:12px;
+  font-size:14px;
+  font-family:inherit;
+  background:#fff;
+  color:#1a1a1a;
+  outline:none;
+  transition:border-color .15s;
+}
+input[type=text]:focus{border-color:#bbb}
+input[type=text]::placeholder{color:#ccc}
+
+/* submit */
+.submit-btn{
+  width:100%;
+  padding:16px;
+  background:#1a1a1a;
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:500;
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:2rem;
+  letter-spacing:.01em;
+  transition:background .15s;
+}
+.submit-btn:hover{background:#333}
+.submit-btn:disabled{background:#ccc;cursor:not-allowed}
+
+/* status */
+.status-bar{
+  font-size:13px;
+  padding:10px 14px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
+  text-align:center;
+}
+.status-bar.err{background:#fde8e8;color:#c0392b;display:block}
+.status-bar.loading{background:#f5f5f3;color:#888;display:block}
+
+/* success */
+.success-box{
+  text-align:center;
+  padding:5rem 1.5rem;
+  display:none;
+  min-height:60vh;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.success-mark{font-size:36px;margin-bottom:20px;color:#1a1a1a;display:block}
+.success-title{font-size:20px;font-weight:500;margin-bottom:10px;color:#1a1a1a}
+.success-sub{font-size:15px;color:#888;line-height:1.75}
+
+/* mobile */
+@media(max-width:480px){
+  .wrap{padding:1.5rem 1rem 3rem}
+  .hero{padding:2rem 0 1.5rem}
+  .hero-title{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="mainPage">
+  <div class="hero">
+    <div class="hero-name">Isaac</div>
+    <div class="hero-title">說說你眼中的我</div>
+    <div class="hero-sub">沒有標準答案，也不需要很完整。<br>你怎麼想，我就怎麼想知道。</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-q">你覺得我有哪些特質？</div>
+    <div class="section-hint">從下面選幾個你覺得符合的，沒有限制</div>
+    <div class="counter">已選 <b id="traitCount">0</b> 個</div>
+    <div class="tag-group" id="traitTags"></div>
+
+    <div class="sub-label">第一印象是什麼？</div>
+    <div class="section-hint">不管好壞，第一眼的感覺直接說</div>
+    <div class="counter">已選 <b id="impressionCount">0</b> 個</div>
+    <div class="tag-group" id="impressionTags"></div>
+
+    <div class="sub-label" style="margin-top:18px">還想補充什麼？</div>
+    <textarea id="traitText" rows="3" placeholder="幾個字也可以…" oninput="cc(this,'tc')"></textarea>
+    <div class="char-count" id="tc">0 字</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-q">聽完之後，有什麼想跟我說的？</div>
+    <div class="section-hint">感受、想法、或讓你想到的事都可以</div>
+    <div class="tag-group" id="reactionTags"></div>
+    <textarea id="reactionText" rows="4" placeholder="有什麼想說的，直接說…" style="margin-top:12px" oninput="cc(this,'rc')"></textarea>
+    <div class="char-count" id="rc">0 字</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-q">有什麼好奇的，或想聽我聊什麼？</div>
+    <div class="section-hint">任何問題都可以，我會認真看</div>
+    <textarea id="curiousText" rows="3" placeholder="想問我什麼，或想聽什麼主題…" oninput="cc(this,'cu')"></textarea>
+    <div class="char-count" id="cu">0 字</div>
+
+    <div class="blindbox-wrap">
+      <div class="blindbox-label">丟一個問題讓我盲盒開箱</div>
+      <div class="blindbox-hint">如果可以問我任何事，你會問什麼？</div>
+      <textarea id="blindboxText" rows="2" placeholder="你的問題…" oninput="cc(this,'bc')"></textarea>
+      <div class="char-count" id="bc">0 字</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-q">這裡是什麼調性？</div>
+    <div class="friend-box">
+      <p>我會放<span class="hl">正在思考的事、遇到的奇葩情況、還有一些沒辦法在一般限動說的東西</span>。比較像朋友之間的視訊聊天，不是單方面的內容輸出。</p>
+      <p style="margin-top:12px">如果你也習慣<span class="hl">思考怎麼改善自己、願意分享想法、偶爾一起討論事情</span>，那內容大概對你胃口。</p>
+      <p style="margin-top:12px;color:#aaa;font-size:13px">未來也會做一些有趣的嘗試，會優先丟在這裡。目前還是實驗階段，名額看情況，先填先排。</p>
+    </div>
+    <div style="font-size:14px;color:#666;margin-bottom:8px">留下 IG 帳號，有緣分的話我會去找你</div>
+    <div class="ig-row">
+      <span class="ig-pre">@</span>
+      <input type="text" id="igHandle" placeholder="你的 IG 帳號">
+    </div>
+    <div style="font-size:12px;color:#ccc;margin-top:8px">不想留也沒關係，前面的回覆我一樣會認真看</div>
+  </div>
+
+  <div id="statusBar" class="status-bar"></div>
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">送出</button>
+</div>
+
+<div class="success-box" id="successBox">
+  <span class="success-mark">✦</span>
+  <div class="success-title">收到了，謝謝你</div>
+  <div class="success-sub">我會認真看每一則回覆。<br>如果你留了 IG，我會去找你。</div>
+</div>
+
+<script>
+const API='https://script.google.com/macros/s/AKfycbyYohk8ss08hCkauhYP4mStNADIVIoLPhxmGbKSGkskgJyrufMiSDp9Ehdv4l6-YTxIlQ/exec';
+
+const TRAITS=[
+  '分析型','感性','直接','細膩','理性','衝動','獨立','重感情',
+  '話少','話多','有主見','隨和','外向','內向','務實','理想主義',
+  '行動派','思考派','有原則','彈性大','競爭心強','佛系','認真','隨性',
+  '細心','粗線條','善於傾聽','愛分享','有神秘感','親切','有距離感',
+  '有趣','穩重','熱情','冷靜','敢衝','謹慎','自律','享樂主義'
+];
+const IMPRESSIONS=[
+  '不容易讀懂','感覺很忙很難約','話題比較硬','讓人有點壓力',
+  '太有想法難插話','表情不多','一開始有點冷','很快就熟',
+  '自帶一種氣場','感覺有很多祕密','聊起來比想像中好聊',
+  '比外表看起來更溫柔','比預期更有料','讓人想繼續了解'
+];
+const REACTIONS=[
+  '有共鳴','有點意外','讓我想到自己','還在消化',
+  '想多了解你','被你說中了','有點衝擊','讓我重新想了什麼'
+];
+
+const OFF={bg:'#f0efed',color:'#666',border:'1.5px solid #e0dfdc'};
+const ON_T={bg:'#1a1a1a',color:'#fff',border:'1.5px solid #1a1a1a'};
+const ON_I={bg:'#854F0B',color:'#fff',border:'1.5px solid #854F0B'};
+const ON_R={bg:'#0F6E56',color:'#fff',border:'1.5px solid #0F6E56'};
+
+const traitSel=new Set(),impressionSel=new Set(),reactionSel=new Set();
+
+function applyStyle(btn,s){
+  btn.style.background=s.bg;
+  btn.style.color=s.color;
+  btn.style.border=s.border;
+}
+
+function makeTags(cid,items,sel,onS,countId){
+  const el=document.getElementById(cid);
+  items.forEach(v=>{
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.textContent=v;
+    btn.style.cssText='padding:7px 15px;border-radius:24px;font-size:13px;cursor:pointer;font-family:inherit;outline:none;line-height:1;transition:all .12s;';
+    applyStyle(btn,OFF);
+    btn.addEventListener('click',()=>{
+      if(sel.has(v)){sel.delete(v);applyStyle(btn,OFF);}
+      else{sel.add(v);applyStyle(btn,onS);}
+      if(countId)document.getElementById(countId).textContent=sel.size;
+    });
+    el.appendChild(btn);
+  });
+}
+
+makeTags('traitTags',TRAITS,traitSel,ON_T,'traitCount');
+makeTags('impressionTags',IMPRESSIONS,impressionSel,ON_I,'impressionCount');
+makeTags('reactionTags',REACTIONS,reactionSel,ON_R,null);
+
+function cc(el,id){document.getElementById(id).textContent=el.value.length+' 字';}
+
+function setStatus(type,msg){
+  const el=document.getElementById('statusBar');
+  el.className='status-bar '+(type||'');
+  el.textContent=msg;
+}
+
+async function handleSubmit(){
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;
+  btn.textContent='送出中…';
+  setStatus('loading','正在送出，請稍候…');
+
+  const payload={
+    '特質標籤':[...traitSel].join('、'),
+    '第一印象標籤':[...impressionSel].join('、'),
+    '補充文字':document.getElementById('traitText').value.trim(),
+    '聽完回應標籤':[...reactionSel].join('、'),
+    '聽完回應文字':document.getElementById('reactionText').value.trim(),
+    '好奇問題':document.getElementById('curiousText').value.trim(),
+    '盲盒問題':document.getElementById('blindboxText').value.trim(),
+    'IG帳號':document.getElementById('igHandle').value.trim(),
+  };
+
+  try{
+    await fetch(API,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});
+    document.getElementById('mainPage').style.display='none';
+    const sb=document.getElementById('successBox');
+    sb.style.display='flex';
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent='送出';
+    setStatus('err','送出失敗，請再試一次');
+  }
+}
+</script>
+</body>
+</html>
